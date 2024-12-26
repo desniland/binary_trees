@@ -1,9 +1,9 @@
-## C - Binary trees
+# C - Binary trees
 
-##Learning Objectives
+# Learning Objectives
 - At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
-##General
+# General
 - What is a binary tree
 - What is the difference between a binary tree and a Binary Search Tree
 - What is the possible gain in terms of time complexity compared to linked lists
@@ -11,8 +11,8 @@
 - What are the different traversal methods to go through a binary tree
 - What is a complete, a full, a perfect, a balanced binary tree
 
-##Requirements
-##General
+# Requirements
+# General
 - Allowed editors: vi, vim, emacs
 - All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 - All your files should end with a new line
@@ -26,10 +26,10 @@
 - Don’t forget to push your header file
 - All your header files should be include guarded
 
-##GitHub
+# GitHub
 - There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.
 
-#More Info
+# More Info
 - Data structures
 -  Please use the following data structures and types for binary trees. Don’t forget to include them in your header file.
 
@@ -65,10 +65,10 @@ typedef struct binary_tree_s heap_t;
 - This function is used only for visualization purposes. You don’t have to push it to your repo. It may not be used during the correction
 
 
-####Tasks
+#### Tasks
 
 0. New node
-mandatory
+
 Write a function that creates a binary tree node
 
 Prototype: binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
@@ -76,7 +76,9 @@ Where parent is a pointer to the parent node of the node to create
 And value is the value to put in the new node
 When created, a node does not have any child
 Your function must return a pointer to the new node, or NULL on failure
-alex@/tmp/binary_trees$ cat 0-main.c 
+
+$ cat 0-main.c 
+
 #include <stdlib.h>
 #include "binary_trees.h"
 
@@ -102,21 +104,25 @@ int main(void)
     binary_tree_print(root);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 0-main.c 0-binary_tree_node.c -o 0-node
-alex@/tmp/binary_trees$ ./0-node
+
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 0-main.c 0-binary_tree_node.c -o 0-node
+
+$ ./0-node
        .-------(098)-------.
   .--(012)--.         .--(402)--.
 (006)     (016)     (256)     (512)
-alex@/tmp/binary_trees$
+
+$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 0-binary_tree_node.c
 
 
 
 1. Insert left
-mandatory
+   
 Write a function that inserts a node as the left-child of another node
 
 Prototype: binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
@@ -124,7 +130,9 @@ Where parent is a pointer to the node to insert the left-child in
 And value is the value to store in the new node
 Your function must return a pointer to the created node, or NULL on failure or if parent is NULL
 If parent already has a left-child, the new node must take its place, and the old left-child must be set as the left-child of the new node.
-alex@/tmp/binary_trees$ cat 1-main.c 
+
+$ cat 1-main.c 
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -148,8 +156,10 @@ int main(void)
     binary_tree_print(root);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 1-main.c 1-binary_tree_insert_left.c 0-binary_tree_node.c -o 1-left
-alex@/tmp/binary_trees$ ./1-left
+
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 1-main.c 1-binary_tree_insert_left.c 0-binary_tree_node.c -o 1-left
+
+$ ./1-left
   .--(098)--.
 (012)     (402)
 
@@ -160,12 +170,13 @@ alex@/tmp/binary_trees$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 1-binary_tree_insert_left.c
 
 
 
 2. Insert right
-mandatory
+
 Write a function that inserts a node as the right-child of another node
 
 Prototype: binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);
@@ -173,7 +184,8 @@ Where parent is a pointer to the node to insert the right-child in
 And value is the value to store in the new node
 Your function must return a pointer to the created node, or NULL on failure or if parent is NULL
 If parent already has a right-child, the new node must take its place, and the old right-child must be set as the right-child of the new node.
-alex@/tmp/binary_trees$ cat 2-main.c 
+
+$ cat 2-main.c 
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -197,29 +209,33 @@ int main(void)
     binary_tree_print(root);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 2-main.c 2-binary_tree_insert_right.c 0-binary_tree_node.c -o 2-right
-alex@/tmp/binary_trees$ ./2-right 
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 2-main.c 2-binary_tree_insert_right.c 0-binary_tree_node.c -o 2-right
+
+$ ./2-right 
   .--(098)--.
 (012)     (402)
 
   .-------(098)--.
 (012)--.       (128)--.
      (054)          (402)
-alex@/tmp/binary_trees$
+$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 2-binary_tree_insert_right.c
 
 
 3. Delete
-mandatory
+
 Write a function that deletes an entire binary tree
 
 Prototype: void binary_tree_delete(binary_tree_t *tree);
 Where tree is a pointer to the root node of the tree to delete
 If tree is NULL, do nothing
-alex@/tmp/binary_trees$ cat 3-main.c 
+
+$ cat 3-main.c 
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -242,8 +258,9 @@ int main(void)
     binary_tree_delete(root);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 3-main.c 3-binary_tree_delete.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 3-del
-alex@/tmp/binary_trees$ valgrind ./3-del
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 3-main.c 3-binary_tree_delete.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 3-del
+
+$ valgrind ./3-del
 ==13264== Memcheck, a memory error detector
 ==13264== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
 ==13264== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
@@ -261,15 +278,14 @@ alex@/tmp/binary_trees$ valgrind ./3-del
 ==13264== 
 ==13264== For counts of detected and suppressed errors, rerun with: -v
 ==13264== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-alex@/tmp/binary_trees$
+
+$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 3-binary_tree_delete.c
  
-
-
-
 
 4. Is leaf
 Write a function that checks if a node is a leaf
@@ -278,7 +294,8 @@ Prototype: int binary_tree_is_leaf(const binary_tree_t *node);
 Where node is a pointer to the node to check
 Your function must return 1 if node is a leaf, otherwise 0
 If node is NULL, return 0
-alex@/tmp/binary_trees$ cat 4-main.c 
+
+$ cat 4-main.c 
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -308,8 +325,10 @@ int main(void)
     printf("Is %d a leaf: %d\n", root->right->right->n, ret);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 4-binary_tree_is_leaf.c 4-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 4-leaf
-alex@/tmp/binary_trees$ ./4-leaf 
+
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 4-binary_tree_is_leaf.c 4-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 4-leaf
+
+$ ./4-leaf 
   .-------(098)--.
 (012)--.       (128)--.
      (054)          (402)
@@ -320,19 +339,22 @@ alex@/tmp/binary_trees$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 4-binary_tree_is_leaf.c
 
 
 
 5. Is root
-mandatory
+
 Write a function that checks if a given node is a root
 
 Prototype: int binary_tree_is_root(const binary_tree_t *node);
 Where node is a pointer to the node to check
 Your function must return 1 if node is a root, otherwise 0
 If node is NULL, return 0
-alex@/tmp/binary_trees$ cat 5-main.c 
+
+$ cat 5-main.c 
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -362,31 +384,37 @@ int main(void)
     printf("Is %d a root: %d\n", root->right->right->n, ret);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 5-binary_tree_is_root.c 5-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 5-root
-alex@/tmp/binary_trees$ ./5-root 
+
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 5-binary_tree_is_root.c 5-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 5-root
+
+$ ./5-root 
   .-------(098)--.
 (012)--.       (128)--.
      (054)          (402)
 Is 98 a root: 1
 Is 128 a root: 0
 Is 402 a root: 0
-alex@/tmp/binary_trees$
+
+$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 5-binary_tree_is_root.c
 
 
 
 6. Pre-order traversal
-mandatory
+   
 Write a function that goes through a binary tree using pre-order traversal
 
 Prototype: void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));
 Where tree is a pointer to the root node of the tree to traverse
 And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
 If tree or func is NULL, do nothing
-alex@/tmp/binary_trees$ cat 6-main.c
+
+$ cat 6-main.c
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -422,8 +450,8 @@ int main(void)
     binary_tree_preorder(root, &print_num);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 6-main.c 6-binary_tree_preorder.c 0-binary_tree_node.c -o 6-pre
-alex@/tmp/binary_trees$ ./6-pre
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 6-main.c 6-binary_tree_preorder.c 0-binary_tree_node.c -o 6-pre
+$ ./6-pre
        .-------(098)-------.
   .--(012)--.         .--(402)--.
 (006)     (056)     (256)     (512)
@@ -434,22 +462,25 @@ alex@/tmp/binary_trees$ ./6-pre
 402
 256
 512
-alex@/tmp/binary_trees$
+$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 6-binary_tree_preorder.c
 
 
 7. In-order traversal
-mandatory
+
 Write a function that goes through a binary tree using in-order traversal
 
 Prototype: void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int));
 Where tree is a pointer to the root node of the tree to traverse
 And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
 If tree or func is NULL, do nothing
-alex@/tmp/binary_trees$ cat 7-main.c
+
+$ cat 7-main.c
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -485,8 +516,8 @@ int main(void)
     binary_tree_inorder(root, &print_num);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 7-main.c 7-binary_tree_inorder.c 0-binary_tree_node.c -o 7-in
-alex@/tmp/binary_trees$ ./7-in
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 7-main.c 7-binary_tree_inorder.c 0-binary_tree_node.c -o 7-in
+$ ./7-in
        .-------(098)-------.
   .--(012)--.         .--(402)--.
 (006)     (056)     (256)     (512)
@@ -497,22 +528,25 @@ alex@/tmp/binary_trees$ ./7-in
 256
 402
 512
-alex@/tmp/binary_trees$
+$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 7-binary_tree_inorder.c
 
 
 8. Post-order traversal
-mandatory
+
 Write a function that goes through a binary tree using post-order traversal
 
 Prototype: void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));
 Where tree is a pointer to the root node of the tree to traverse
 And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
 If tree or func is NULL, do nothing
-alex@/tmp/binary_trees$ cat 8-main.c
+
+$ cat 8-main.c
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -548,8 +582,9 @@ int main(void)
     binary_tree_postorder(root, &print_num);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 8-main.c 8-binary_tree_postorder.c 0-binary_tree_node.c -o 8-post
-alex@/tmp/binary_trees$ ./8-post
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 8-main.c 8-binary_tree_postorder.c 0-binary_tree_node.c -o 8-post
+
+$ ./8-post
        .-------(098)-------.
   .--(012)--.         .--(402)--.
 (006)     (056)     (256)     (512)
@@ -560,21 +595,24 @@ alex@/tmp/binary_trees$ ./8-post
 512
 402
 98
-alex@/tmp/binary_trees$
+$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 8-binary_tree_postorder.c
 
 
 9. Height
-mandatory
+
 Write a function that measures the height of a binary tree
 
 Prototype: size_t binary_tree_height(const binary_tree_t *tree);
 Where tree is a pointer to the root node of the tree to measure the height.
 If tree is NULL, your function must return 0
-alex@/tmp/binary_trees$ cat 9-main.c 
+
+$ cat 9-main.c 
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -604,8 +642,8 @@ int main(void)
     printf("Height from %d: %lu\n", root->left->right->n, height);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 9-binary_tree_height.c 9-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 9-height
-alex@/tmp/binary_trees$ ./9-height 
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 9-binary_tree_height.c 9-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 9-height
+$ ./9-height 
   .-------(098)--.
 (012)--.       (128)--.
      (054)          (402)
@@ -616,18 +654,21 @@ alex@/tmp/binary_trees$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 9-binary_tree_height.c
 
 
 
 10. Depth
-mandatory
+
 Write a function that measures the depth of a node in a binary tree
 
 Prototype: size_t binary_tree_depth(const binary_tree_t *tree);
 Where tree is a pointer to the node to measure the depth
 If tree is NULL, your function must return 0
-alex@/tmp/binary_trees$ cat 10-main.c 
+
+$ cat 10-main.c 
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -657,30 +698,32 @@ int main(void)
     printf("Depth of %d: %lu\n", root->left->right->n, depth);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 10-binary_tree_depth.c 10-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 10-depth
-alex@/tmp/binary_trees$ ./10-depth 
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 10-binary_tree_depth.c 10-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 10-depth
+$ ./10-depth 
   .-------(098)--.
 (012)--.       (128)--.
      (054)          (402)
 Depth of 98: 0
 Depth of 128: 1
 Depth of 54: 2
-alex@/tmp/binary_trees$
+$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 10-binary_tree_depth.c
 
 
 
 11. Size
-mandatory
+    
 Write a function that measures the size of a binary tree
 
 Prototype: size_t binary_tree_size(const binary_tree_t *tree);
 Where tree is a pointer to the root node of the tree to measure the size
 If tree is NULL, the function must return 0
-alex@/tmp/binary_trees$ cat 11-main.c 
+$ cat 11-main.c 
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -710,8 +753,9 @@ int main(void)
     printf("Size of %d: %lu\n", root->left->right->n, size);
     return (0);
 }
-alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 11-binary_tree_size.c 11-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 11-size
-alex@/tmp/binary_trees$ ./11-size 
+$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 11-binary_tree_size.c 11-main.c 0-binary_tree_node.c 2-binary_tree_insert_right.c -o 11-size
+
+$ ./11-size 
   .-------(098)--.
 (012)--.       (128)--.
      (054)          (402)
@@ -722,12 +766,13 @@ alex@/tmp/binary_trees$
 Repo:
 
 GitHub repository: binary_trees
+
 File: 11-binary_tree_size.c
 
 
 
 12. Leaves
-mandatory
+
 Write a function that counts the leaves in a binary tree
 
 Prototype: size_t binary_tree_leaves(const binary_tree_t *tree);
